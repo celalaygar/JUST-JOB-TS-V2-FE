@@ -127,14 +127,14 @@ export default function RegisterPage() {
     if (!formData.email.trim()) { errors.email = translations.register.errors.emailRequired }
     else if (!/\S+@\S+\.\S+/.test(formData.email)) { errors.email = translations.register.errors.emailInvalid }
 
-    if (!formData.dateOfBirth) { errors.dateOfBirth = translations.register.errors.dateRequired }
+    // if (!formData.dateOfBirth) { errors.dateOfBirth = translations.register.errors.dateRequired }
     if (!formData.password) { errors.password = translations.register.errors.passwordRequired }
     else if (formData.password.length < 6) { errors.password = translations.register.errors.passwordLength }
     if (formData.password !== formData.confirmPassword) { errors.confirmPassword = translations.register.errors.passwordsMatch }
 
     // Yeni validasyonlar
-    if (!formData.gender) { errors.gender = translations.register.errors.genderRequired; }
-    if (!formData.department) { errors.department = translations.register.errors.departmentRequired; }
+    // if (!formData.gender) { errors.gender = translations.register.errors.genderRequired; }
+    // if (!formData.department) { errors.department = translations.register.errors.departmentRequired; }
 
     setFormErrors(errors)
     return Object.keys(errors).length === 0
@@ -145,9 +145,10 @@ export default function RegisterPage() {
     setLoadingForm(true)
     if (validateForm()) {
       try {
+        const payload = { ...formData, department: null };
         const response = await BaseService.request(REGISTER, {
           method: 'POST',
-          body: formData,
+          body: payload,
         });
         console.log('Register success:', response);
         toast({
@@ -200,7 +201,7 @@ export default function RegisterPage() {
           </div>
 
           <div className=" mt-4 sm:mt-2 flex justify-center sm:absolute sm:top-0 sm:right-0 languageDiv" >
-            <SelectShad value={language} onValueChange={handleLanguageChange}>
+            {/* <SelectShad value={language} onValueChange={handleLanguageChange}>
               <SelectTrigger className="w-[120px]">
                 <SelectValue placeholder="Language" />
               </SelectTrigger>
@@ -216,7 +217,7 @@ export default function RegisterPage() {
                   </div>
                 </SelectItem>
               </SelectContent>
-            </SelectShad>
+            </SelectShad> */}
           </div>
         </div>
 

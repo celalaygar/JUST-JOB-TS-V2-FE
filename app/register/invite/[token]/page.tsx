@@ -187,7 +187,7 @@ export default function RegisterPage() {
       if (validateForm()) {
         setIsLoading(true);
         try {
-          const payload = { ...formData, token };
+          const payload = { ...formData, token, department: null };
           await BaseService.request(REGISTER_WITH_TOKEN, {
             method: httpMethods.POST,
             body: payload,
@@ -237,7 +237,7 @@ export default function RegisterPage() {
             <p className="text-[var(--fixed-sidebar-muted)] mt-2">{translations.register.subtitle}</p>
           </div>
           <div className="mt-4 sm:mt-2 flex justify-center sm:absolute sm:top-0 sm:right-0 languageDiv">
-            <Select value={language} onValueChange={(value) => setLanguage(value as "en" | "tr")}>
+            {/* <Select value={language} onValueChange={(value) => setLanguage(value as "en" | "tr")}>
               <SelectTrigger className="w-[120px]">
                 <SelectValue placeholder="Language" />
               </SelectTrigger>
@@ -253,7 +253,7 @@ export default function RegisterPage() {
                   </div>
                 </SelectItem>
               </SelectContent>
-            </Select>
+            </Select> */}
           </div>
         </div>
         <Card>

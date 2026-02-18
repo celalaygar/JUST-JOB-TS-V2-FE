@@ -91,7 +91,7 @@ export default function LoginPage() {
           </div>
 
           <div className=" mt-4 sm:mt-2 flex justify-center sm:absolute sm:top-0 sm:right-0 languageDiv" >
-            <Select value={language} onValueChange={handleLanguageChange}>
+            {/*<Select value={language} onValueChange={handleLanguageChange}>
               <SelectTrigger className="w-[120px]">
                 <SelectValue placeholder="Language" />
               </SelectTrigger>
@@ -107,7 +107,7 @@ export default function LoginPage() {
                   </div>
                 </SelectItem>
               </SelectContent>
-            </Select>
+            </Select>*/}
           </div>
         </div>
 
