@@ -100,22 +100,22 @@ export default function RegisterPage() {
         setFormData((prev) => ({ ...prev, email: response.invitedUserEmail }));
         setIsTokenValid(true);
         toast({
-          title: "Token Geçerli",
-          description: "Davet linki başarıyla doğrulandı. Lütfen kayıt işlemini tamamlayın.",
+          title: "Token Valid",
+          description: "Token is valid. You can proceed with registration.",
         });
       } else {
         setIsTokenValid(false);
         toast({
-          title: "Token Geçersiz",
-          description: "Davet linki geçersiz veya süresi dolmuş.",
+          title: "Token Invalid",
+          description: "Invalid or expired token. Please check your invitation link or contact support.",
           variant: "destructive",
         });
       }
     } catch (error: any) {
       setIsTokenValid(false);
-      const errorMessage = error.message || "Token doğrulaması sırasında bir hata oluştu.";
+      const errorMessage = error.message || "Token validation failed.";
       toast({
-        title: "Doğrulama Hatası",
+        title: "Token Validation Failed",
         description: errorMessage,
         variant: "destructive",
       });
@@ -177,8 +177,8 @@ export default function RegisterPage() {
       e.preventDefault();
       if (!isTokenValid) {
         toast({
-          title: "İşlem Başarısız",
-          description: "Lütfen önce tokenin geçerli olduğundan emin olun.",
+          title: "Register failed",
+          description: "Token is not valid.",
           variant: "destructive",
         });
         return;
@@ -193,8 +193,8 @@ export default function RegisterPage() {
             body: payload,
           });
           toast({
-            title: "Kayıt Başarılı",
-            description: `${formData.email} kullanıcısı başarıyla kaydedildi.`,
+            title: "Register successful",
+            description: `${formData.email} registered successfully.`,
           });
           setFormData({
             firstname: "",
@@ -211,9 +211,9 @@ export default function RegisterPage() {
           });
           setFormErrors({});
         } catch (error: any) {
-          const errorMessage = error.message || "Kayıt işlemi sırasında bir hata oluştu.";
+          const errorMessage = error.message || "An error occurred during registration.";
           toast({
-            title: "Kayıt Başarısız",
+            title: "Register failed",
             description: errorMessage,
             variant: "destructive",
           });
